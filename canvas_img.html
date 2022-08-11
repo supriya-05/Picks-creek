@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #img1{
+            width: 30%;
+            height: 30%;
+            margin-left: 50%;
+            margin-top: 15%;
+            margin-bottom: 5%;
+            background-color: grey;}
+    </style>
+        
+
+</head>
+
+<body>
+
+    <input type="file" class="custom-file-input" id="upload-file">
+    <label for="upload-file" class="custom-file-label">Choose Image</label>
+    <canvas id="img1"></canvas>
+
+    <button id="download-btn" class="btn btn-primary btn-block">Download Image</button>
+
+    
+
+</body>
+<script>
+    const canvas = document.getElementById("img1");
+    const ctx = canvas.getContext("2d");
+
+    let img = new Image();
+    let fileName = "";
+
+    const downloadBtn = document.getElementById("download-btn");
+    const uploadFile = document.getElementById("upload-file");
+    const revertBtn = document.getElementById("revert-btn");
+
+    // Upload File
+    uploadFile.addEventListener("change", () => {
+        // Get File
+        const file = document.getElementById("upload-file").files[0];
+        // Init FileReader API
+        const reader = new FileReader();
+
+        // Check for file
+        if (file) {
+            // Set file name
+            fileName = file.name;
+            // Read data as URL
+            reader.readAsDataURL(file);
+        }
+
+        // Add image to canvas
+        reader.addEventListener(
+            "load",
+            () => {
+                // Create image
+                img = new Image();
+                // Set image src
+                img.src = reader.result;
+                // On image load add to canvas
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0, img.width, img.height);
+                    canvas.removeAttribute("data-caman-id");
+                };
+            },
+            false
+        );
+    });
+
+
+    
+
+    // Download Event
+    downloadBtn.addEventListener("click", () => {
+        // Get ext
+        const fileExtension = fileName.slice(-4);
+
+        // Init new filename
+        let newFilename;
+
+        // Check image type
+        if (fileExtension === ".jpg" || fileExtension === ".png") {
+            // new filename
+            newFilename = fileName.substring(0, fileName.length - 4) + "-edited.jpg";
+        }
+
+        // Call download
+        download(canvas, newFilename);
+    });
+
+    // Download
+    function download(canvas, filename) {
+        // Init event
+        let e;
+        // Create link
+        const link = document.createElement("a");
+
+        // Set props
+        link.download = filename;
+        link.href = canvas.toDataURL("image/jpeg", 0.8);
+        // New mouse event
+        e = new MouseEvent("click");
+        // Dispatch event
+        link.dispatchEvent(e);
+    }
+</script>
+
+</html>
