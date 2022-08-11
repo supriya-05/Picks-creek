@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HOME */
+
+body#home {
+    height: 100%;
+    background-image: url(images/home-img.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+/* EDIT */
+
+body#edit {
+   background-color: #2e2d2d; 
+}
+
+#fileBtn {
+    background-color: rgba(207, 207, 207);
+    font-weight: 520;
+    font-size: 2em;
+    border-radius: 2rem;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    right: 40%;
+    top: 15%;
+    margin-right: -126px;
+    z-index: 6;
+}
+
+#img {
+    width: 30%;
+    height: 30%;
+    margin-left: 50%;
+    margin-top: 15%;
+    margin-bottom: 5%;
+    z-index: 7;
+}
+/* SIDENAV */
+.sidenav {
+    height: 100%;
+    width: 400px;
+    position: fixed;
+    top: 66px;
+    left: 0;
+    background-color:#504f4f;
+    overflow-x: hidden;
+    padding-top: 70px;
+    z-index: 8;
+}
+  
+.sidenav label {
+    padding: 6px 6px 60px 40px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;   
+}
+  
+.sidenav label:hover {
+    color: black;
+}
+
+select {
+    width: 40%;
+    margin-left: 2px;
+}
+
+/* SLIDER */
+input {
+    width: 70%;
+}
+  
+output {
+    width: 5%;
+    text-align: center;
+}
+
+.slider {
+    -webkit-appearance: none;
+    margin-top: -40px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+
+/* HEADER */
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'AfrahDemo';
+    src: url('fonts/Free-Afrah-Serif-Font/wft/AfrahDemo.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+.header{
+    background: black;
+    height: 66px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+header * {
+    color:white;
+}
+
+header .nav-logo {
+    color: white;
+    margin: 15px;
+    font-size: 2.5em;
+    font-family: 'AfrahDemo', sans-serif;
+    float: left;
+    height: inherit;
+    margin-left: 1.2em;
+}
+
+header ul {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    font-family: sans-serif;
+}
+
+header ul li {
+    float: left;
+}
+
+header ul li a {
+    display: inline-block;
+    position: relative;
+    padding: 24px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    text-decoration: none;
+    z-index: 9;
+}
+
+header ul li a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+header ul li a:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* HAMBURGER MENU */
+
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+/* GET STARTED BUTTON */
+
+#start-btn {
+    text-align: center;  
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    height: 5.5rem;
+    width: 20rem;
+    color: white;
+    background: black;
+    font-size: 30px;
+    border-radius: 10%;
+    right: 42%;
+    top: 70%;
+    border-radius: 15px;
+    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0),
+    inset 1px 1px 5px rgba(255, 255, 255, 0.7),
+    inset -1px -1px 5px rgba(0, 0, 0, 0),
+    1px 1px 5px rgba(255, 255, 255, 0.7);
+}
+
+#start-btn:hover {
+    background-color: rgba(15, 15, 15, 0.644);
+    transition: 0.3s;
+    height: 5.2rem;
+    width: 19.7rem;
+}
+
+@media only screen and (max-width: 755px) {
+    .nav {
+        position: fixed;
+        left: -100%;
+        top: 6.5rem;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.4);;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 18px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .header * {
+        color: black;
+    }
+
+    header ul li {
+        float: none;
+    }
+
+    header .nav-logo {
+        margin-left: 1.2rem;
+    }
+}
